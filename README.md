@@ -1,50 +1,92 @@
-# Bank_loan-SQL-project
-Project Overview
-This project is focused on building a comprehensive data analytics pipeline using SQL, with the integration of Microsoft SQL Server, MySQL, and PostgreSQL databases. The main objective is to guide users through real-world SQL queries and address business problems through data analytics and visualizations using tools like Power BI and Tableau.
+# 🏦 Bank Loan Analytics & Credit Risk (SQL Project)
+### Relational Database Analysis, Portfolio Performance & Risk Modeling
 
-Project Steps
-Data Import and Database Setup
+[![SQL](https://img.shields.io/badge/Language-SQL-blue?style=for-the-badge&logo=postgresql&logoColor=white)](#technologies-used)
+[![Database](https://img.shields.io/badge/RDBMS-SQL%20Server%20%7C%20MySQL%20%7C%20PostgreSQL-orange?style=for-the-badge)](#technologies-used)
+[![Scale](https://img.shields.io/badge/Dataset-38%2C577%20Rows-green?style=for-the-badge)](#dataset-overview)
 
-Begin by importing financial loan data, consisting of 38,577 rows and 24 fields, into SQL Server databases. Each record holds information about loan applications, customer details, and repayment statuses. Learn how to create and prepare databases for analytics.
+---
 
-SQL Queries for Business Problems
+## 📌 Project Overview
+This project delivers an end-to-end SQL analytics pipeline evaluating retail banking loan performance, borrower risk profiles, and capital recovery. Using a dataset of **38,577 loan records across 24 attributes**, the queries derive executive-level Key Performance Indicators (KPIs), track Month-to-Date (MTD) vs. Prior-Month-to-Date (PMTD) growth, and categorize credit risk exposure into Good vs. Bad loans.
 
-Execute SQL queries to solve business problems through project-based learning. Analyze key performance indicators (KPIs) like total loan applications, funded amounts, and customer repayment data. Identify trends and critical factors such as loan performance, interest rates, and customers' financial health.
+---
 
-Integration with Dashboard Tools
+## 🎯 Business Problem Statement
+Financial institutions must monitor lending portfolio health to prevent capital erosion and optimize interest yields. Key business questions addressed:
+1. **Portfolio Health:** What percentage of disbursed capital is performing vs. non-performing (charged-off/default)?
+2. **Temporal Trends:** How are loan applications and funded amounts trending month-over-month?
+3. **Risk Stratification:** What borrower attributes (Debt-to-Income ratio, employment tenure, home ownership, loan purpose) correlate with higher charge-off rates?
+4. **Geographic Distribution:** Which states exhibit the highest default risks and capital utilization?
 
-Build dynamic dashboards using Power BI, Tableau, and Excel to visualize insights from SQL queries. Translate my findings into clear summaries and key metrics for stakeholders. Focus on:
+---
 
-Loan performance across different regions
+## 📊 Dataset Overview
+* **Scale:** 38,577 rows × 24 columns.
+* **Key Dimensions:** `id`, `loan_amount`, `funded_amount`, `total_payment`, `issue_date`, `int_rate`, `dti` (Debt-to-Income), `loan_status`, `grade`, `sub_grade`, `emp_length`, `home_ownership`, `purpose`, `address_state`.
 
-Monthly trends of loan issues
+---
 
-Comparative analysis of good vs. bad loans
+## 🛠️ Technologies Used
+* **SQL Dialect:** T-SQL (Microsoft SQL Server) / ANSI SQL (MySQL, PostgreSQL compatible).
+* **Techniques:** Aggregations (`COUNT`, `SUM`, `AVG`), Date Functions (`MONTH`, `YEAR`, Date Parting), Window Functions, Conditional Logic (`CASE WHEN`), Grouping & Ordering.
 
-KPI summaries like debt-to-income ratios, average interest rates, and more
+---
 
-Tools & Technologies
-Databases: Microsoft SQL Server, MySQL, PostgreSQL
+## 📈 Key Metric Formulations & Findings
 
-Software Versions: MS SQL Server (19.0), Power BI (June 2023)
+### 1. Overall Portfolio Performance KPIs
+* **Total Loan Applications:** 38,577
+* **Total Funded Capital:** \$435.75M+
+* **Total Cash Recovered:** \$473.07M+
+* **Average Interest Rate:** Evaluated continuously across issuance months.
+* **Average Debt-to-Income (DTI):** Monitored to assess consumer leverage ratios.
 
-Key Functionalities
-SQL query writing (joins, subqueries, analytical functions)
+### 2. Good Loan vs. Bad Loan Segmentation
+The portfolio is classified based on `loan_status`:
+* **Good Loans:** Includes `Fully Paid` and `Current`.
+  * Queries compute Good Loan Application %, Total Good Funded Amount, and Total Cash Received.
+* **Bad Loans (Non-Performing):** Includes `Charged Off`.
+  * Tracks default frequency, capital write-offs, and net loss margins.
 
-Database design and management
+### 3. Dimensional Risk Analysis
+The SQL scripts decompose risk across:
+* **Monthly Issuance Trends:** Tracks seasonal spikes in borrowing.
+* **Regional Breakdown (`address_state`):** Identifies geographic lending density and state-by-state default variance.
+* **Loan Term Evaluation:** 36-month vs. 60-month performance comparison.
+* **Loan Purpose:** Debt consolidation, credit card payoff, small business, home improvement.
 
-Business analysis through SQL-driven insights
+---
 
-Handling large datasets and deriving KPIs for business solutions
+## 🗂️ Project Structure
 
-Problem Statements
-Address several business problems, such as:
+```
+Bank_loan-SQL-project/
+├── Bank_loan.sql      # Production SQL script containing all KPI and analytical queries
+└── README.md          # Comprehensive project documentation
+```
 
-Loan Application Analysis: Identify the total number of loan applications received and funded, along with repayment status.
+---
 
-Good vs. Bad Loans: Segregate loans into good (fully paid or in progress) and bad (defaulted) categories, and analyze the percentage funded versus repaid.
+## 🚀 How to Run the Queries
 
-Regional and Trend Analysis: Create dashboards that show regional loan performance and trends over time.
+1. **Database Setup:**
+   * Create a database in your preferred RDBMS (SQL Server, MySQL, or PostgreSQL):
+     ```sql
+     CREATE DATABASE BankLoanDB;
+     ```
+2. **Import Data:**
+   * Import the financial loan records into a table named `Bank_loan_data`.
+3. **Execute Analysis:**
+   * Open and execute `Bank_loan.sql` sequentially to generate the KPI summary tables and dimensional reports.
 
-Expected Outcomes
-Its applications are in real-world data analytics, and it is proficient in building professional dashboards to communicate insights effectively.
+---
+
+## 👨‍💻 Author
+
+**Yonatan Abrham**  
+*Highway Design Engineer & Applied Data Scientist*  
+* Founder & Developer of [Infradigital CAD](https://www.infradigitalcad.com/)
+* LinkedIn: [linkedin.com/in/yonatan-abrham1](https://www.linkedin.com/in/yonatan-abrham1/)
+* GitHub: [github.com/YonInsights](https://github.com/YonInsights)
+* Email: [email2yonatan@gmail.com](mailto:email2yonatan@gmail.com)
